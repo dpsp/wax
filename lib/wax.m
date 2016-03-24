@@ -97,6 +97,10 @@ void wax_setup() {
 	[wax_gc start];
 }
 
+void wax_startWithNil(){
+    wax_start(nil, nil);
+}
+
 void wax_start(char* initScript, lua_CFunction extensionFunction, ...) {
     
 	wax_setup();
@@ -233,13 +237,6 @@ static void addGlobals(lua_State *L) {
 
 #pragma mark block
 
-    lua_pushcfunction(L, luaCallBlockReturnObjectWithObjectParam);
-    lua_setglobal(L, "luaCallBlockReturnObjectWithObjectParam");
-    
-    lua_pushcfunction(L, luaCallBlockReturnVoidWithObjectParam);
-    lua_setglobal(L, "luaCallBlockReturnVoidWithObjectParam");
-
-    
     lua_pushcfunction(L, luaCallBlockWithParamsTypeArray);
     lua_setglobal(L, "luaCallBlockWithParamsTypeArray");
 
